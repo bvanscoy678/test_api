@@ -1,0 +1,55 @@
+{% extends 'travel/base.html' %}
+
+{% block content %}
+    <h2>Depart Trip(Choose one)</h2>
+
+    <table class="table table-bordered table-responsive table-striped table-hover">
+        <thead>
+        <tr class="bg-info">
+            <th>Airline</th>
+            <th>Deport City & Arrival City</th>
+            <th>Deport Time & Arrival Time</th>
+            <th>Price</th>
+            <th>Select</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for item in depart_response.results %}
+            <tr>
+                <td>{{ item.itineraries.0.outbound.flights.0.marketing_airline }}</td>
+                <td>{{ item.itineraries.0.outbound.flights.0.origin.airport }} - {{ item.itineraries.0.outbound.flights.0.destination.airport }}</td>
+                <td>{{ item.itineraries.0.outbound.flights.0.departs_at}} - {{ item.itineraries.0.outbound.flights.0.arrives_at}}</td>
+                <td><b>{{depart_response.currency}}</b> {{item.fare.total_price}}</td>
+                <td><input type="radio" name="depart" value="" style="display: block;"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <h2>Return Trip(Choose one)</h2>
+
+    <table class="table table-bordered table-responsive table-striped table-hover">
+        <thead>
+        <tr class="bg-info">
+            <th>Airline</th>
+            <th>Deport City & Arrival City</th>
+            <th>Deport Time & Arrival Time</th>
+            <th>Price</th>
+            <th>Select</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for item in return_response.results %}
+            <tr>
+                <td>{{ item.itineraries.0.outbound.flights.0.marketing_airline }}</td>
+                <td>{{ item.itineraries.0.outbound.flights.0.origin.airport }} - {{ item.itineraries.0.outbound.flights.0.destination.airport }}</td>
+                <td>{{ item.itineraries.0.outbound.flights.0.departs_at}} - {{ item.itineraries.0.outbound.flights.0.arrives_at}}</td>
+                <td><b>{{depart_response.currency}}</b> {{item.fare.total_price}}</td>
+                <td><input type="radio" name="depart" value="" style="display: block;"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

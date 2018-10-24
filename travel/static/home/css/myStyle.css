@@ -1,0 +1,118 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.nav-logo {
+	width: 170px;
+}
+.nav-font {
+	font-size: 19px;
+	font-weight: 500;
+    text-align: center;
+}
+.nav-font:hover {
+	background-color: #d1eaffa3;
+}
+.trip-nav1::before {
+	content: '';
+	border-left: 2px solid;
+	height: 25px;
+	padding-right: 18px;
+}
+.trip-nav2::before {
+	content: '';
+	border-left: 2px solid;
+	height: 25px;
+	padding-right: 6px;
+}
+
+ .main-container {
+    width: 100%;
+    border: 1px solid;
+    height: 500px;
+    background-image: url("../images/bg-img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   /* display: flex;
+    align-items: center;
+    justify-content: center;*/
+}
+.Box-tabs {
+	width: 60%;
+	margin: 0px auto 0 auto;
+	padding-top:5%; 
+}
+.nav-tb {
+	border-bottom: 0px;
+}
+ .tb-link {
+	/*background: rgba(240,248,255,0.64);*/
+	background-color: #f7e1c1;
+	color: black;
+}
+.main-box-content {
+	width: 60%;
+	height: auto;
+	margin: 0 auto;
+	border-radius: 0px 0px 15px 15px;
+}
+.tab-material {
+	padding: 20px 50px;
+}
+.lb-radio {
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 5px;
+    background: #f7e1c1;
+    color: black;
+    font-size: 18px;
+}
+input[type="radio"] {
+	display: none;
+}
+input[type="radio"]:hover + label {
+	cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+	background-color: #007bff;
+	color: white;
+}
+.member-box {
+	width: 70%;
+	height: 31px;
+}
+.sr-btn {
+	margin: 20px 0 0 0;
+    padding: 7px 45px;
+}
+.icon-box {
+    font-size: 40px;
+    float: right;
+    margin-top: 11px;
+}
+.icons {
+	color: black;
+}
+.icons:hover {
+	color:blue;
+}
+.btm-info-box {
+	padding: 5% 0px;
+}
+.info-box {
+	width: 100%;
+}
+.info-btn {
+	text-align: center;
+}
+.img-cover {
+	width: 100%;
+	padding: 10px;
+}
+.img1 {
+    width: 100%;
+    height: 240px;
+    object-fit: fill;
+}
+

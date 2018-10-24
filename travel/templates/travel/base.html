@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initail-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/myStyle.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/font-awesome.css">
+	<title>Quad-Tech Solution</title>
+</head>
+
+	<!--Top navbar -->
+<div class="fluid-container">
+<div class="row mx-0">
+	<div class="col-12 px-0">
+		<nav class="navbar navbar-expand-md bg-light navbar-light py-0">
+	<a class="navbar-brand" href="{% url 'travel:home' %}"><img class="nav-logo" src="/static/home/images/quad-logo.png"></a>
+	<a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#CollapsibleNavber">
+		<span class="navbar-toggler-icon"></span>
+	</a>
+	<div class="collapse navbar-collapse justify-content-end" id="CollapsibleNavber">
+		<ul class="navbar-nav ">
+			<li class="nav-item">
+				<a class="nav-link nav-font" href="#">Account</a>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link nav-font trip-nav1" href="#">My Trips</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link nav-font trip-nav2" href="#">Support</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+                <div class="links">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static "images/customer.jpg" %}" alt="customer"/>
+                                <div class="caption">
+                                    <h2>Travel</h2>
+                                    <p> Blah, blah, blah </p>
+                                    <p><a class="btn btn-default" href="{% url 'travel:trip_request_new' %}"
+                                              role="button">Search New Trips</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

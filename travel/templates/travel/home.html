@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initail-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/myStyle.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" type="text/css" href="/static/home/css/font-awesome.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Quad-Tech Solution</title>
+    <style>
+        .ui-autocomplete-loading {
+        background: white url("http://jqueryui.com/resources/demos/autocomplete/images/ui-anim_basic_16x16.gif") right center no-repeat;
+        }
+    </style>
+</head>
+<body>
+	<!--Top navbar -->
+<div class="fluid-container">
+<div class="row mx-0">
+	<div class="col-12 px-0">
+		<nav class="navbar navbar-expand-md bg-light navbar-light py-0">
+	<a class="navbar-brand" href="#"><img class="nav-logo" src="/static/home/images/quad-logo.png"></a>
+	<a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#CollapsibleNavber">
+		<span class="navbar-toggler-icon"></span>
+	</a>
+	<div class="collapse navbar-collapse justify-content-end" id="CollapsibleNavber">
+		<ul class="navbar-nav ">
+			<li class="nav-item">
+				<a class="nav-link nav-font" href="#">Account</a>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link nav-font trip-nav1" href="#">My Trips</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link nav-font trip-nav2" href="#">Support</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+</div>
+</div>
+</div>
+<section class="main-container">
+	<div class="Box-tabs">
+			<ul class="nav nav-tabs nav-tb">
+				<li class="nav-item">
+					<a class="nav-link active tb-link" data-toggle="tab" href="#Flights">FLIGHTS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link tb-link" data-toggle="tab" href="#Hotels">HOTELS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link tb-link" data-toggle="tab" href="#Car-Rentals">CAR RENTALS</a>
+				</li>
+			</ul>
+	</div>
+	<div class="main-box-content tab-content bg-light" >
+		<div class="tab-material tab-pane  active" id="Flights">
+            <form action="{% url 'travel:search' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+                <div class="row pb-3">
+                    <div class="col-12">
+                        <input type="radio" name="Roundtrip1" onclick="return1()"  id="Roundtrip1" checked>
+                            <label for="Roundtrip1" class="lb-radio">Roundtrip</label>
+                        <input type="radio" name="Roundtrip1"  onclick="return2()" id="OneWay1">
+                            <label for="OneWay1" class="lb-radio">One Way</label>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <div class="ui-widget">
+                          <label for="city_from">Flying From</label>
+                          <input id="city_from" class="form-control" type="text" name="city_from" placeholder="City or Airport">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="ui-widget">
+                            <label for="city_to">Flying To</label>
+                            <input id="city_to" class="form-control" type="text" name="city_to" placeholder="City or Airport">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- date n time -->
+                    <div class="col-3">
+                        <label for="form_datetime">Departure</label><br>
+                        <input size="10" type="text" name="departure" readonly class="form_datetime">
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    </div>
+
+                    <div id="returnsection" class="col-3">
+                        <label for="form_datetime">Returning</label><br>
+                        <input size="10" type="text" value="  " name="returning" readonly class="form_datetime">
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    </div>
+                    <!-- dropdown -->
+                    <div class="col-3">
+                        <label for="adult">Adult (+18)</label><br>
+                        <select name="adult" class="member-box">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label for="children">Children (0-17)</label><br>
+                        <select name="children" class="member-box">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" class="btn btn-primary sr-btn" value="SEARCH"/>
+                    </div>
+    			</div>
+            </form>
+		</div>
+<!-- hotels -->
+		<div class="tab-material tab-pane fade" id="Hotels">
+			<div class="row pb-3">
+
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<label for="CityOrAirport">Going to</label>
+					<input class="form-control" type="text" name="CityOrAirport" placeholder="City,State">
+				</div>
+
+			<div class="row mx-0 pt-3">
+				<!-- date n time -->
+				<div class="col-6">
+					<label for="form_datetime">Check-in</label><br>
+					<input size="10" type="text" value="  " readonly class="form_datetime">
+					<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+	 			</div>
+
+	 			<div class="col-6">
+					<label for="form_datetime">Check-out</label><br>
+					<input size="10" type="text" value="  " readonly class="form_datetime">
+					<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+	 			</div>
+
+				<div class="col-12">
+					<a class="btn btn-primary sr-btn" href="#">SEARCH</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CAR RENTALS -->
+	<div class="tab-material tab-pane fade" id="Car-Rentals">
+			<div class="row pb-3">
+				{% comment %}<div class="col-12">
+					<input type="radio" name="Roundtrip2"  id="Roundtrip2" checked>
+						<label for="Roundtrip2" class="lb-radio">Roundtrip</label>
+					<input type="radio" name="Roundtrip2"  id="OneWay2">
+						<label for="OneWay2" class="lb-radio">One Way</label>
+				</div>{% endcomment %}
+			</div>
+			<div class="row pb-3">
+				<div class="col-12">
+					<label for="Picking-up">Picking Up</label>
+					<input class="form-control" type="text" name="Picking-up" placeholder="City or Airport">
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- date n time -->
+				<div class="col-6">
+					<label for="form_datetime">Pick Up Date</label><br>
+					<input size="10" type="text" value="  " readonly class="form_datetime">
+					<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+	 			</div>
+
+	 			<div class="col-6">
+					<label for="form_datetime">Drop Off Date</label><br>
+					<input size="10" type="text" value="  " readonly class="form_datetime">
+					<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+	 			</div>
+
+				<div class="col-12">
+					<a class="btn btn-primary sr-btn" href="#">SEARCH</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mx-0">
+		<div class="col-12">
+			<div class="icon-box">
+				<a href="#"><i class="fa fa-home icons" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-search icons" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-user-circle icons" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- sub-body -->
+<section class="container btm-info-box">
+	<div class="row">
+		<div class="col-4 ">
+			<div class="info-box">
+			<h4>Paradise </h4>
+			<p> Paradise is a place of exceptional happiness and delight.Paradisiacal notions are often laden with pastoral imagery, and may be cosmogonical or eschatological or both, often compared to the miseries of human civilization: in paradise there is only peace, prosperity, and happiness. Paradise is a place of contentment</p>
+			<div class="info-btn">
+				<a class="btn btn-danger px-4" href="#">More Info</a>
+			</div>
+			</div>
+		</div>
+		<div class="col-4  p-0">
+			<div class="img-cover">
+				<img class="img1" src="/static/home/images/hotel-1.jpg">
+			</div>
+		</div>
+		<div class="col-4  p-0">
+			<div class="img-cover">
+				<img class="img1" src="/static/home/images/hotel-2.jpg">
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- java-scrite/jquery link -->
+<script src="/static/home/js/jquery-3.3.1.min.js"></script>
+{#<script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/static/home/js/bootstrap.bundle.min.js"></script>
+<script src="/static/home/js/bootstrap.min.js"></script>
+<script src="/static/home/js/bootstrap-datetimepicker.js"></script>
+
+<script type="text/javascript">
+    $(".form_datetime").datepicker({dateFormat: 'yy-mm-dd'});
+{#    $(".form_datetime_Car-rental").datetimepicker({format: 'yyyy-mm-dd hh:ii'});#}
+{#    $(".form_datetime").datetimepicker({format: 'yyyy-MM-dd'});#}
+
+    function return1(){
+           $('#returnsection').show();  }
+    function return2(){
+           $('#returnsection').hide();  }
+
+    $(function() {
+        $( "#city_from" ).autocomplete({
+        source: function( request, response ) {
+            $.ajax({
+                url: "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete",
+                dataType: "json",
+                data: {
+                apikey: "0FcV8cuF3wF2hQAbEeiEvLyFHrL4mj1H",
+                term: request.term
+                },
+                success: function( data ) {
+                response( data );
+                }
+            });
+        },
+        minLength: 3,
+        select: function( event, ui ) {
+            console.log('even: ', event);
+            console.log('ui: ', ui);
+            console.log('this: ', this);
+{#            console.log( ui.item ?#}
+{#            "Selected: " + ui.item.label :#}
+{#            "Nothing selected, input was " + this.value);#}
+        },
+        open: function() {
+            $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+        },
+        close: function() {
+            $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+        }
+        });
+    });
+
+    $(function() {
+        $( "#city_to" ).autocomplete({
+        source: function( request, response ) {
+            $.ajax({
+                url: "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete",
+                dataType: "json",
+                data: {
+                apikey: "0FcV8cuF3wF2hQAbEeiEvLyFHrL4mj1H",
+                term: request.term
+                },
+                success: function( data ) {
+                response( data );
+                }
+            });
+        },
+        minLength: 3,
+        select: function( event, ui ) {
+            console.log('even: ', event);
+            console.log('ui: ', ui);
+            console.log('this: ', this);
+{#            console.log( ui.item ?#}
+{#            "Selected: " + ui.item.label :#}
+{#            "Nothing selected, input was " + this.value);#}
+        },
+        open: function() {
+            $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+        },
+        close: function() {
+            $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+        }
+        });
+    });
+
+
+</script>
+</body>
+</html>
